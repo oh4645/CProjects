@@ -5,7 +5,7 @@ int main(void)
     double n, sum = 0.0;
 
     printf("This program sums a series of integers.\n");
-    printf("Enter integers (0 to terminate); ");
+    printf("Enter integers (0 to terminate): ");
 
     scanf("%lf", &n);
     while (n != 0)
