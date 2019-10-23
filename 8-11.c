@@ -1,15 +1,15 @@
 #include <stdio.h>
 int main(void)
 {
-    char ch = ' ';
-
+    char ch = ' ', phone_number[15];
+    
     printf("Enter phone number: ");
 
-    
-    while (ch != '\n')
+    for (i = 0; i < 15; i++)
     {
-    ch = getchar();
-
+	ch = getchar();
+	if (ch != '\n')
+	    break;
     if ((ch == 'A') || (ch == 'B') || (ch == 'C'))
     {
 	ch = '2';
@@ -43,9 +43,17 @@ int main(void)
     {
 	ch = '9';
     }	
-
-    printf("%c", ch);
+	phone_number[i] = ch;
     }
+
+    printf("In numeric form: ");
+
+    for (i = 0; i < 15; i++)
+    {
+	printf("%c", phone_number[i]);
+    }
+
+    printf("\n");
 
     return 0;
 
