@@ -1,60 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 
 int main(void)
 {
-    int i, j, x = 0, y = 0;
-    c	    case 2:
-		{
-		    if (((field[x + 1][y]) != '.') || (x == 9))
-			break;
-		    
-		    field[++x][y] = ++k;
-		}
-		break;
-
-	    case 3:
-		{
-		    
-		    if (((field[x][y - 1]) != '.') || (y == 0))
-			break;
-		
-		    field[x][--y] = ++k;
-		}
-		break;
-
-	    case 0:
-		{
-		    
-		    if (((field[x - 1][y]) != '.') || (x == 0))
-			break;
-		    
-		    field[--x][y] = ++k;
-		}
-		break;
-
-	    default:
-			break;		
-	}
-
-	if (((field[x][y - 1]) != '.') && ((field[x][y + 1]) != '.') && ((field[x + 1][y]) != '.') && ((field[x - 1][y]) != '.'))
-	    break;
-	if (k == 'Z')
-	    break;
-	
-    }
-    for(i = 0; i < 10; i++)
-    {
-	for(j = 0; j < 10; j++)
-	{
-	    printf("%c ", field[i][j]);
-	}
-	printf("\n");
-    }
-    return 0;
-}har k = 'A';
+    int i, j, x = 0, y = 0, move;
+    char k = 'A';
     char field[10][10];
+    bool down, up, right, left;
 
     for (i = 0; i < 10; i++) 
 	//initialization every element of array "field" into '.'.
@@ -69,61 +23,67 @@ int main(void)
     
     
 
-    field[0][0] = k;//staring point marked as 'A'.
+    field[x][y] = k;//staring point marked as 'A'.
 
 
 
     for(;;)
     {
-	switch (rand() % 4)
+	down = false;
+	up = false;
+	right = false;
+	left = false;
+	move = 0;
+	
+	if ((y < 9) && (field[x][y + 1] == '.'))
+	   right = true;
+
+	if ((x < 9) && (field[x + 1][y] == '.'))
+	   down = true;
+
+	if ((y > 0) && (field[x][y - 1] == '.'))
+	   left = true;
+
+	if ((x > 0) && (field[x - 1][y] == '.'))
+	   up = true;
+
+	move = rand() % 4;
+
+	switch (move)
 	{
 	    case 1: 
 		{
-		    if (((field[x][y + 1]) != '.') || (y == 9))
-			break;
-		   
+		    if (right)
 		    field[x][++y] = ++k;
-		}
-	        break;
-
-	    case 2:
-		{
-		    if (((field[x + 1][y]) != '.') || (x == 9))
-			break;
-		    
-		    field[++x][y] = ++k;
+		    break;
 		}
 		break;
-
+	     case 2:
+		{
+		    if (down)
+		    field[++x][y] = ++k;
+		    break;
+		}
+		break;
 	    case 3:
 		{
-		    
-		    if (((field[x][y - 1]) != '.') || (y == 0))
-			break;
-		
+		    if (left)
 		    field[x][--y] = ++k;
+		    break;
 		}
 		break;
-
 	    case 0:
 		{
-		    
-		    if (((field[x - 1][y]) != '.') || (x == 0))
-			break;
-		    
+		    if (up)
 		    field[--x][y] = ++k;
+		    break;
 		}
 		break;
-
-	    default:
-			break;		
 	}
-
-	if (((field[x][y - 1]) != '.') && ((field[x][y + 1]) != '.') && ((field[x + 1][y]) != '.') && ((field[x - 1][y]) != '.'))
-	    break;
+	if (up + down + left + right == 0)
+	    break;	    
 	if (k == 'Z')
 	    break;
-	
     }
     for(i = 0; i < 10; i++)
     {
