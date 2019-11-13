@@ -5,55 +5,7 @@
 int main(void)
 {
     int i, j, x = 0, y = 0;
-    c	    case 2:
-		{
-		    if (((field[x + 1][y]) != '.') || (x == 9))
-			break;
-		    
-		    field[++x][y] = ++k;
-		}
-		break;
-
-	    case 3:
-		{
-		    
-		    if (((field[x][y - 1]) != '.') || (y == 0))
-			break;
-		
-		    field[x][--y] = ++k;
-		}
-		break;
-
-	    case 0:
-		{
-		    
-		    if (((field[x - 1][y]) != '.') || (x == 0))
-			break;
-		    
-		    field[--x][y] = ++k;
-		}
-		break;
-
-	    default:
-			break;		
-	}
-
-	if (((field[x][y - 1]) != '.') && ((field[x][y + 1]) != '.') && ((field[x + 1][y]) != '.') && ((field[x - 1][y]) != '.'))
-	    break;
-	if (k == 'Z')
-	    break;
-	
-    }
-    for(i = 0; i < 10; i++)
-    {
-	for(j = 0; j < 10; j++)
-	{
-	    printf("%c ", field[i][j]);
-	}
-	printf("\n");
-    }
-    return 0;
-}har k = 'A';
+    char k = 'A';
     char field[10][10];
 
     for (i = 0; i < 10; i++) 
