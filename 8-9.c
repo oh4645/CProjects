@@ -5,7 +5,11 @@
 
 int main(void)
 {
+<<<<<<< HEAD
     int i, j, x = 0, y = 0, move;
+=======
+    int i, j, x = 0, y = 0;
+>>>>>>> 9b962d62966e84e2f12f7d48b2787b0a026c2394
     char k = 'A';
     char field[10][10];
     bool down, up, right, left;
